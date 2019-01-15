@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @g_file.name
+%p
+  %b Contents:
+  = @g_file.contents
+%p
+  %b References:
+  = @g_file.references
+
+= link_to 'Edit', edit_g_file_path(@g_file)
+\|
+= link_to 'Back', g_files_path

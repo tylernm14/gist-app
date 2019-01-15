@@ -1,0 +1,25 @@
+%h1 Listing g_files
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Contents
+      %th References
+      %th
+      %th
+      %th
+
+  %tbody
+    - @g_files.each do |g_file|
+      %tr
+        %td= g_file.name
+        %td= g_file.contents
+        %td= g_file.references
+        %td= link_to 'Show', g_file
+        %td= link_to 'Edit', edit_g_file_path(g_file)
+        %td= link_to 'Destroy', g_file, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New G file', new_g_file_path

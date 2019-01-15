@@ -1,0 +1,2 @@
+class GFile < ApplicationRecord
+end
