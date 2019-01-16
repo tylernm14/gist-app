@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Description:
+  = @gist.description
+%p
+  %b Short Name:
+  = @gist.short_name
+
+= link_to 'Edit', edit_gist_path(@gist)
+\|
+= link_to 'Back', gists_path

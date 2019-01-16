@@ -1,5 +1,5 @@
 class GFilesController < ApplicationController
-  before_action authenticate_user!
+  before_action :authenticate_user!
   before_action :set_g_file, only: [:show, :edit, :update, :destroy]
 
   # GET /g_files

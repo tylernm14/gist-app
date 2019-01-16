@@ -1,0 +1,17 @@
+= form_for @gist do |f|
+  - if @gist.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gist.errors.count, "error")} prohibited this gist from being saved:"
+      %ul
+        - @gist.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :short_name
+    = f.text_area :short_name
+    -# Need to add stuff for adding g_files
+  .actions
+    = f.submit 'Save'

@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_235900) do
+ActiveRecord::Schema.define(version: 2019_01_14_023404) do
 
-  create_table "files", force: :cascade do |t|
-    t.text "text"
+  create_table "g_files", force: :cascade do |t|
     t.string "name"
+    t.text "contents"
     t.integer "gist_id"
-    t.index ["gist_id"], name: "index_files_on_gist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gist_id"], name: "index_g_files_on_gist_id"
   end
 
   create_table "gists", force: :cascade do |t|

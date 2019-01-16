@@ -18,3 +18,15 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+
+window.setTimeout(function() {
+    $(".alert-info").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 4000);
+window.setTimeout(function() {
+    $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 4000);
