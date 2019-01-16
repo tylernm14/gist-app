@@ -5,7 +5,7 @@
     %tr
       %th Name
       %th Contents
-      %th References
+      %th Gist ID
       %th
       %th
       %th
@@ -15,7 +15,7 @@
       %tr
         %td= g_file.name
         %td= g_file.contents
-        %td= g_file.references
+        %td= g_file.gist_id
         %td= link_to 'Show', g_file
         %td= link_to 'Edit', edit_g_file_path(g_file)
         %td= link_to 'Destroy', g_file, method: :delete, data: { confirm: 'Are you sure?' }

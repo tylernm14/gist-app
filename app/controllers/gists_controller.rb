@@ -1,6 +1,6 @@
 class GistsController < ApplicationController
-  accepts_nested_attributes_for :file
-  before_action :authenicate_user!
+  # accepts_nested_attributes_for :file
+  before_action :authenticate_user!
   before_action :set_gist, only: [:show, :edit, :update, :destroy]
 
   # GET /gists
