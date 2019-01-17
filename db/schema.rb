@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_01_14_023404) do
 
   create_table "g_files", force: :cascade do |t|
-    t.string "name"
+    t.string "filename"
     t.text "contents"
     t.integer "gist_id"
     t.datetime "created_at", null: false
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 2019_01_14_023404) do
 
   create_table "gists", force: :cascade do |t|
     t.string "description"
-    t.string "short_name"
+    t.string "short_url"
     t.integer "user_id"
-    t.index ["short_name"], name: "index_gists_on_short_name"
+    t.index ["short_url"], name: "index_gists_on_short_url"
     t.index ["user_id"], name: "index_gists_on_user_id"
   end
 

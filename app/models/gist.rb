@@ -5,5 +5,11 @@ class Gist < ApplicationRecord
 
   validates_presence_of :g_files
   validates_presence_of :description
-  validates_presence_of :short_name
+  validates_presence_of :short_url
+
+  validates_uniqueness_of :short_url
+
+
+  # before validation, make up a short_url if none is given
+  # before_create check that ther is no collision of short_url
 end

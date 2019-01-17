@@ -70,6 +70,6 @@ class GFilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def g_file_params
-      params.require(:g_file).permit(:name, :contents, :gist_id)
+      params.require(:g_file).permit(:filename, :contents, :gist_id)
     end
 end

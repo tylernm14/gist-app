@@ -6,23 +6,22 @@
         - @gist.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :short_name
-    = f.text_field :short_name
-  -#.field
-  %ul#gFilesList
-    = f.fields_for :g_files do |ff|
-      %li
-        .field
-          = ff.label :filename
-          = ff.text_field :name
-        .field
-          = ff.label :contents
-          = ff.text_area :contents
-        = ff.button "Add File", type: 'button', id: 'default-g_file'
-        -#= button_tag "Add File", type: 'button', id: 'default-file'
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :description, class: 'sr-only'
+    = f.text_field :description, class: 'form-control', placeholder: "Gist description..."
+  .form-group
+    = f.label :short_url, class: 'sr-only'
+    = f.text_field :short_url, class: 'form-control', placeholder: "Short and sweet"
+  #gFiles
+    #g_file_group_0
+      = f.fields_for :g_files do |ff|
+        .form-group
+          = ff.label :filename, class: 'sr-only'
+          = ff.text_field :filename, class: 'form-control', placeholder: "Filename including extension"
+        .form-group
+          = ff.label :contents, class: 'sr-only'
+          = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10
+  .form-group
+    = f.button "Add File", type: 'button', class: 'btn btn-secondary', id: 'addGFile', onclick: 'addGFileField()'
+  .form-group
+    = f.submit 'Create', class: 'btn btn-info'
