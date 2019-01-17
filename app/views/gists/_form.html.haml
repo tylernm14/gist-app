@@ -11,7 +11,18 @@
     = f.text_field :description
   .field
     = f.label :short_name
-    = f.text_area :short_name
-    -# Need to add stuff for adding g_files
+    = f.text_field :short_name
+  -#.field
+  %ul#gFilesList
+    = f.fields_for :g_files do |ff|
+      %li
+        .field
+          = ff.label :filename
+          = ff.text_field :name
+        .field
+          = ff.label :contents
+          = ff.text_area :contents
+        = ff.button "Add File", type: 'button', id: 'default-g_file'
+        -#= button_tag "Add File", type: 'button', id: 'default-file'
   .actions
     = f.submit 'Save'

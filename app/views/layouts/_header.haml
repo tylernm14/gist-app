@@ -21,7 +21,7 @@
               = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
         - else
           %li.nav-item
-            Sign In
+            = link_to 'Sign In', new_user_session_path
         -#%li.nav-item
         -#  %a.nav-link.disabled{:href => "#"} Disabled
       -#%form.form-inline.my-2.my-lg-0

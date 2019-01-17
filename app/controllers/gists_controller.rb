@@ -13,6 +13,7 @@ class GistsController < ApplicationController
 
   def new
     @gist = Gist.new
+    @gist.g_files.build
   end
 
   def edit
@@ -57,6 +58,6 @@ class GistsController < ApplicationController
     end
 
     def gist_params
-      params.require(:gist).permit([:description, :short_name])
+      params.require(:gist).permit([:description, :short_name, :g_files_attributes => [:name, :contents]])
     end
 end
