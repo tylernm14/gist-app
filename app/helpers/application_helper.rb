@@ -1,6 +1,5 @@
 module ApplicationHelper
   def flash_class(level)
-    puts "IN HERE"
     case level
     when 'notice' then 'alert alert-info alert-dismissible fade show'
     when 'success' then 'alert alert-success alert-dismissible fade show'

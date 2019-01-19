@@ -1,6 +1,6 @@
 class GistsController < ApplicationController
-  # accepts_nested_attributes_for :file
-  before_action :authenticate_user!
+
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_gist, only: [:show, :edit, :update, :destroy]
 
   # GET /gists
@@ -9,6 +9,12 @@ class GistsController < ApplicationController
   end
 
   def show
+    @comments = if params[:comment]
+                  @gist.comments.where(id: params[:comment])
+                else
+                  @gist.comments.where(parent_id: nil)
+                end
+    # @comments = @comments.page(params[:page]).per(5)
   end
 
   def new
@@ -23,7 +29,7 @@ class GistsController < ApplicationController
     @gist = Gist.new(gist_params)
     respond_to do |format|
       if @gist.save
-        format.html { redirect_to @gist, notice: 'Test was successfully created.' }
+        format.html { redirect_to @gist, notice: 'Gist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @gist }
       else
         format.html { render action: 'new' }
@@ -35,7 +41,7 @@ class GistsController < ApplicationController
   def update
     respond_to do |format|
       if @test.update(gist_params)
-        format.html { redirect_to @gist, notice: 'Test was successfully updated.' }
+        format.html { redirect_to @gist, notice: 'Gist was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,6 +64,6 @@ class GistsController < ApplicationController
     end
 
     def gist_params
-      params.require(:gist).permit([:description, :short_url, :g_files_attributes => [:filename, :contents]])
+      params.require(:gist).permit([:user_id, :description, :short_url, :custom_alias, :g_files_attributes => [:filename, :contents]])
     end
 end

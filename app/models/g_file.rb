@@ -1,5 +1,7 @@
 class GFile < ApplicationRecord
   belongs_to :gist
-  validates_presence_of :filename
-  validates_presence_of :contents
+
+  validates :gist, presence: true
+  validates :filename, presence: true
+  validates :contents, presence: true
 end

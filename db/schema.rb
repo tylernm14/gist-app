@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_14_023404) do
+ActiveRecord::Schema.define(version: 2019_01_18_034613) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.integer "parent_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "g_files", force: :cascade do |t|
     t.string "filename"
@@ -22,11 +34,15 @@ ActiveRecord::Schema.define(version: 2019_01_14_023404) do
   end
 
   create_table "gists", force: :cascade do |t|
+    t.integer "user_id"
     t.string "description"
     t.string "short_url"
-    t.integer "user_id"
-    t.index ["short_url"], name: "index_gists_on_short_url"
+    t.string "custom_alias"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["custom_alias"], name: "index_gists_on_custom_alias"
     t.index ["user_id"], name: "index_gists_on_user_id"
+    t.index [nil], name: "index_gists_on_short_name"
   end
 
   create_table "users", force: :cascade do |t|

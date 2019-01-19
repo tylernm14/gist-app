@@ -13,12 +13,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require data-confirm-modal
 
+//= require_tree .
 
 window.setTimeout(function() {
     $(".alert-info").fadeTo(500, 0).slideUp(500, function(){

@@ -1,12 +1,45 @@
-%p#notice= notice
+.page-header
+  = link_to edit_gist_path(@gist), class: 'btn btn-primary' do
+    Edit
+  %h1 Show gist
+
+%dl.dl-horizontal
+  %dt Description
+  %dd= @gist.description
+
+  %dt Short URL
+  %dd= @gist.short_url
+
+  %dt User
+  %dd= current_user.email
+
+-#%p#notice= notice
 
 %p
-  %b Description:
-  = @gist.description
-%p
-  %b Short Name:
-  = @gist.short_url
+  %b GFiles:
+  - @gist.g_files.each do |g_file|
+    %p
+      = g_file.filename
+    %p
+      = g_file.contents
 
-= link_to 'Edit', edit_gist_path(@gist)
+%h3 Comments
+#comments
+  = render partial: "comments/form", locals: { commentable: @gist }
+  - if params[:comment]
+    %p
+      Single comment thread.
+      = link_to "View all comments", url_for()
+  = render @comments, continue_thread: 5
+
+%br
+-#= paginate @comments
+
+-#= form_for :comment do |f|
+-#  -#= f.hidden_field :parent_id, nil
+-#  = f.text_area :body
+-#  = f.submit 'Comment'
+
+
 \|
 = link_to 'Back', gists_path

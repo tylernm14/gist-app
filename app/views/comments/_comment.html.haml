@@ -1,0 +1,42 @@
+-#= comment.body
+-#- if comment.replies.any?
+-#  = render comment.replies
+-#-#
+-#= form_for [@gist, @comment] do |f|
+-#  - if @comment.errors.any?
+-#    #error_explanation
+-#      %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this g_file from being saved:"
+-#      %ul
+-#        - @comment.errors.full_messages.each do |message|
+-#          %li= message
+-#  = f.hidden_field :parent_id, :value => 1
+-#  = f.hidden_field :user_id, :value => current_user.id
+-#  = f.hidden_field :gist_id, :value => @gist.id
+-#  = f.text_area :body
+-#  = f.submit 'Reply'
+
+- nesting     = local_assigns.fetch(:nesting, 1)
+- max_nesting = local_assigns[:max_nesting]
+- continue_thread = local_assigns[:continue_thread]
+= tag.div id: dom_id(comment), class: "border-left pl-4 mt-4" do
+  - if comment.deleted?
+    %strong [deleted]
+    = link_to "posted", url_for(comment: comment.id, anchor: dom_id(comment))
+    %p [deleted]
+  - else
+    %strong= comment.user.email
+    = link_to "posted", url_for(comment: comment.id, anchor: dom_id(comment))
+    = simple_format comment.body
+  %div{"data-controller" => "reply"}
+    %small
+      = link_to "Reply", "#", data: { action: "click->reply#toggle" }
+      = link_to "Delete", [comment.commentable, comment], method: :delete, data: {confirm: "Are you sure?"} if comment.user == current_user
+    = render partial: "comments/form", locals: { commentable: comment.commentable,
+                                                 parent_id: reply_to_comment_id(comment, nesting, max_nesting),
+                                                 class: "mt-4 d-none",
+                                                 target: "reply.form" }
+  = tag.div id: "#{dom_id(comment)}_comments" do
+    - if continue_thread.present? && nesting >= continue_thread && comment.comments.any?
+      = link_to "Continue this thread", url_for(comment: comment.id, anchor: dom_id(comment))
+    - else
+      = render comment.comments, continue_thread: continue_thread, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting]

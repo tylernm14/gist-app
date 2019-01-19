@@ -1,17 +1,19 @@
-= form_for @gist do |f|
-  - if @gist.errors.any?
+= form_with model: gist, local: true do |f|
+  - if gist.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@gist.errors.count, "error")} prohibited this gist from being saved:"
+      %h2= "#{pluralize(gist.errors.count, "error")} prohibited this gist from being saved:"
       %ul
-        - @gist.errors.full_messages.each do |message|
+        - gist.errors.full_messages.each do |message|
           %li= message
 
   .form-group
     = f.label :description, class: 'sr-only'
     = f.text_field :description, class: 'form-control', placeholder: "Gist description..."
   .form-group
-    = f.label :short_url, class: 'sr-only'
-    = f.text_field :short_url, class: 'form-control', placeholder: "Short and sweet"
+    = f.label :custom_alias, class: 'sr-only'
+    = f.text_field :custom_alias, class: 'form-control', placeholder: "Optional custom url"
+    = f.hidden_field :user_id, :value => current_user.id
+    %small Less than 16 characters
   #gFiles
     #g_file_group_0
       = f.fields_for :g_files do |ff|
@@ -21,7 +23,14 @@
         .form-group
           = ff.label :contents, class: 'sr-only'
           = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10
-  .form-group
-    = f.button "Add File", type: 'button', class: 'btn btn-secondary', id: 'addGFile', onclick: 'addGFileField()'
-  .form-group
-    = f.submit 'Create', class: 'btn btn-info'
+    .form-group.float-left
+      = f.button "Add File", type: 'button', class: 'btn btn-secondary', id: 'addGFile', onclick: 'addGFileField()'
+    .form-group.float-right
+      - if gist.persisted?
+        = link_to 'Delete', gist, method: :delete, class: 'text-danger', data: { confirm: 'Are you sure?' }
+      .button-group
+        = f.submit 'Submit', class: 'btn btn-primary'
+        - if gist.persisted?
+          = link_to 'Cancel', gist, class: 'btn btn-link'
+        - else
+          = link_to 'Cancel', gists_path, class: 'btn btn-secondary'
