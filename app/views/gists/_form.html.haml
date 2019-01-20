@@ -25,14 +25,13 @@
         .form-group
           = ff.label :contents, class: 'sr-only'
           = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10
-    .form-group.float-left
+  .row
+    .col-sm-6.form-group
       = f.button "Add File", type: 'button', class: 'btn btn-secondary', id: 'addGFile', onclick: 'addGFileField()'
-    .form-group.float-right
-      - if gist.persisted?
-        = link_to 'Delete', gist, method: :delete, class: 'text-danger', data: { confirm: 'Are you sure?' }
+    .col-sm-6.form-group.text-right
       .button-group
-        = f.submit 'Submit', class: 'btn btn-primary'
+        = f.submit class: 'btn btn-primary'
         - if gist.persisted?
           = link_to 'Cancel', gist, class: 'btn btn-link'
         - else
-          = link_to 'Cancel', gists_path, class: 'btn btn-secondary'
+          = link_to 'Cancel', gists_path, class: 'btn btn-link'

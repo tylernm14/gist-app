@@ -1,18 +1,17 @@
-.container
-  - if flash.present?
-    .row
-      .col-lg-12
-        .flash
-          - flash.each do |k, v|
-            %div{:class => "#{flash_class(k)}"}
-              %button.close{:type=>"button", 'data-dismiss'=>"alert", "aria-label"=>"Close", :role=>"alert"}
-                %span{'aria-hidden'=>"true"} &times;
-              %h4
-                - if v.kind_of?(Array)
-                  - v.each do |nv|
-                    %ul
-                      %li.error
-                        = nv
-                - else
-                  = v
+- if flash.present?
+  .row
+    .col-lg-12
+      .flash
+        - flash.each do |k, v|
+          %div{:class => "#{flash_class(k)}"}
+            %button.close{:type=>"button", 'data-dismiss'=>"alert", "aria-label"=>"Close", :role=>"alert"}
+              %span{'aria-hidden'=>"true"} &times;
+            %h4
+              - if v.kind_of?(Array)
+                - v.each do |nv|
+                  %ul
+                    %li.error
+                      = nv
+              - else
+                = v
 

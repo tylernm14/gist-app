@@ -1,6 +1,11 @@
 .page-header
-  = link_to edit_gist_path(@gist), class: 'btn btn-primary' do
-    Edit
+  .float-right
+    = link_to gists_path, class: 'btn btn-default' do
+      %span{class: "glyphicon glyphicon-list-alt"}
+      All Gists
+    = link_to edit_gist_path(@gist), class: 'btn btn-primary' do
+      %span{class: "glyphicon glyphicon-pencil"}
+      Edit
   %h1 Show gist
 
 %dl.dl-horizontal
@@ -8,7 +13,8 @@
   %dd= @gist.description
 
   %dt Short URL
-  %dd= @gist.short_url.value
+  - @link ="http://#{@host_addr}/#{@gist.short_url.value}"
+  %dd= link_to @link, @link
 
   %dt User
   %dd= current_user.email
@@ -16,7 +22,7 @@
 -#%p#notice= notice
 
 %p
-  %b GFiles:
+  %b Files:
   - @gist.g_files.each do |g_file|
     %p
       = g_file.filename
@@ -40,6 +46,3 @@
 -#  = f.text_area :body
 -#  = f.submit 'Comment'
 
-
-\|
-= link_to 'Back', gists_path

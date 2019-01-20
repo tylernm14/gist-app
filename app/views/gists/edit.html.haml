@@ -1,7 +1,9 @@
-%h1 Editing gist
+.page-header
+  .float-right
+    - if @gist.persisted?
+      = link_to @gist, method: :delete, class: 'text-danger', data: { confirm: 'Delete gist?' } do
+        %span{class: "glyphicon glyphicon-remove"}
+        Delete
+  %h1 Editing gist
 
-= render 'form'
-
-= link_to 'Show', @gist
-\|
-= link_to 'Back', gists_path
+= render 'form', gist: @gist

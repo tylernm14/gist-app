@@ -68,6 +68,7 @@ gem 'haml', '~> 5'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails', '~> 4.3'
 gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap-glyphicons'
 gem 'data-confirm-modal', '~> 1.6', '>= 1.6.2' # Use bootstrap modals
 gem 'devise', '~> 4.5'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'

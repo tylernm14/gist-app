@@ -4,7 +4,9 @@
     %h1 Listing gists
 
   .col-sm-6.text-right
-    = link_to 'Add New Gist', new_gist_path, class: 'btn btn-primary'
+    = link_to new_gist_path, class: 'btn btn-primary' do
+      %span{class: 'glyphicon glyphicon-plus'}
+      New Gist
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
@@ -13,6 +15,7 @@
         %th Description
         %th User
         %th Short Url
+        %th
     %tbody
       - @gists.each do |gist|
         = content_tag :tr, id: dom_id(gist), class: dom_class(gist) do

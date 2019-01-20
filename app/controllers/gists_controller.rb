@@ -15,6 +15,7 @@ class GistsController < ApplicationController
                   @gist.comments.where(parent_id: nil)
                 end
     # @comments = @comments.page(params[:page]).per(5)
+    @host_addr = request.host_with_port
   end
 
   def new
@@ -41,7 +42,7 @@ class GistsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @test.update(gist_params)
+      if @gist.update(gist_params)
         format.html { redirect_to @gist, notice: 'Gist was successfully updated.' }
         format.json { head :no_content }
       else

@@ -7,7 +7,7 @@ class Gist < ApplicationRecord
   accepts_nested_attributes_for :g_files, :allow_destroy => true,
                                 :reject_if => :all_blank
 
-  has_one :short_url, as: :shortenable
+  has_one :short_url, as: :shortenable, :dependent => :destroy
   accepts_nested_attributes_for :short_url, :allow_destroy => true,
                                 :reject_if => :all_blank
 
