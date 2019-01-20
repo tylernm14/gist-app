@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_034613) do
+ActiveRecord::Schema.define(version: 2019_01_20_011515) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -36,13 +36,19 @@ ActiveRecord::Schema.define(version: 2019_01_18_034613) do
   create_table "gists", force: :cascade do |t|
     t.integer "user_id"
     t.string "description"
-    t.string "short_url"
-    t.string "custom_alias"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["custom_alias"], name: "index_gists_on_custom_alias"
     t.index ["user_id"], name: "index_gists_on_user_id"
-    t.index [nil], name: "index_gists_on_short_name"
+  end
+
+  create_table "short_urls", force: :cascade do |t|
+    t.string "value"
+    t.string "shortenable_type"
+    t.integer "shortenable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shortenable_type", "shortenable_id"], name: "index_short_urls_on_shortenable_type_and_shortenable_id"
+    t.index ["value"], name: "index_short_urls_on_value"
   end
 
   create_table "users", force: :cascade do |t|

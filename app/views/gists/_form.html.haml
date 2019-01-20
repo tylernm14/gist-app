@@ -10,10 +10,12 @@
     = f.label :description, class: 'sr-only'
     = f.text_field :description, class: 'form-control', placeholder: "Gist description..."
   .form-group
-    = f.label :custom_alias, class: 'sr-only'
-    = f.text_field :custom_alias, class: 'form-control', placeholder: "Optional custom url"
+    = f.fields_for :short_url do |ff|
+      = ff.label :value, class: 'sr-only'
+      = ff.text_field :value, class: 'form-control', placeholder: "Optional custom url path"
+      %small Up to 16 alphanumeric characters plus '-' and '_'
+  .form-group
     = f.hidden_field :user_id, :value => current_user.id
-    %small Less than 16 characters
   #gFiles
     #g_file_group_0
       = f.fields_for :g_files do |ff|

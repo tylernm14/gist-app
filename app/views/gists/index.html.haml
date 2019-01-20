@@ -18,7 +18,7 @@
         = content_tag :tr, id: dom_id(gist), class: dom_class(gist) do
           %td= gist.description
           %td= gist.user.email
-          %td= gist.short_url
+          %td= gist.short_url.value
           %td= link_to 'Show', gist
         -#%td= link_to 'Edit', edit_gist_path(gist)
         -#%td= link_to 'Destroy', gist, method: :delete, data: { confirm: 'Are you sure?' }
