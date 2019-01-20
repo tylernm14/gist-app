@@ -71,6 +71,7 @@ gem 'bootstrap', '~> 4.2.1'
 gem 'data-confirm-modal', '~> 1.6', '>= 1.6.2' # Use bootstrap modals
 gem 'devise', '~> 4.5'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
+gem 'font-awesome-sass', '~> 5.6'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-github', '~> 1.3'

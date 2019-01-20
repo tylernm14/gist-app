@@ -12,6 +12,9 @@
  *
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "bootstrap";
 //@import "jumbotron-narrow";
 @import "main_layout";
+@import "stick_footer"
