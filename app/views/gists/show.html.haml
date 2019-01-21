@@ -19,15 +19,15 @@
   %dt User
   %dd= current_user.email
 
--#%p#notice= notice
-
 %p
-  %b Files:
+  %h3 Files
   - @gist.g_files.each do |g_file|
-    %p
-      = g_file.filename
-    %p
-      = g_file.contents
+    .card.mb-4
+      .card-header
+        %strong= g_file.filename
+      #myCardBody{ style: "font-family: monospace;"}
+        .card-body
+          %p= g_file.contents
 
 %h3 Comments
 #comments

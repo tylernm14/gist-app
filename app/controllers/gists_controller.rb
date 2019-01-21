@@ -5,7 +5,7 @@ class GistsController < ApplicationController
 
   # GET /gists
   def index
-    @gists = Gist.all
+    @gists = Gist.order(created_at: :desc)
   end
 
   def show
