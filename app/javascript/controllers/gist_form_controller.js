@@ -122,6 +122,13 @@ export default class extends Controller {
     }
 
     deleteGFileField(event) {
+        let delButton = event.currentTarget
+        let delButtonId = delButton.getAttribute('id')
+        let regexp = /gFileDeleteButton_(\d+)/
+        let idNumStr = regexp.exec(delButtonId)[1]
+        let gFileDiv = document.getElementById("gFileForm_"+idNumStr)
+        // rather than remove child, should set class to d-none and update hidden field for _destroy
+        gFileDiv.parentNode.removeChild(gFileDiv)
 
     }
 }

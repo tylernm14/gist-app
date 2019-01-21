@@ -66,6 +66,6 @@ class GistsController < ApplicationController
     end
 
     def gist_params
-      params.require(:gist).permit([:user_id, :description, :short_url_attributes => [:value, :id], :g_files_attributes => [:filename, :contents, :id]])
+      params.require(:gist).permit([:user_id, :description, :short_url_attributes => [:value, :id], :g_files_attributes => [:filename, :contents, :id, :_destroy]])
     end
 end
