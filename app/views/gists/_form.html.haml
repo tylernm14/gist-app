@@ -1,7 +1,7 @@
 = form_with model: gist, local: true do |f|
   - if gist.errors.any?
     #error_explanation
-      %h2= "#{pluralize(gist.errors.count, "error")} prohibited this gist from being saved:"
+      %h2.text-danger= "#{pluralize(gist.errors.count, "error")} prohibited this gist from being saved:"
       %ul
         - gist.errors.full_messages.each do |message|
           %li= message

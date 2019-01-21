@@ -2,10 +2,9 @@
   .row
     .col
       %h1 Editing gist
-    .col
-      .text-right
+      .pb-1
         - if @gist.persisted?
-          = link_to @gist, method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Delete gist?' } do
+          = link_to @gist, method: :delete, class: 'mb-4 text-danger', data: { confirm: 'Delete gist?' } do
             %span{class: "glyphicon glyphicon-remove"}
             Delete
 
