@@ -20,7 +20,6 @@
     #gFiles{data: {target: "gist-form.gFiles"}}
       - gist.g_files.each_with_index do |g_file, index|
         = f.fields_for :g_files, g_file do |ff|
-          -#= render partial: 'g_files/form', locals: { g_file: g_file, parent_form: f, index: index }
           %div{id: "gFileForm_#{index}", data: {target: "gist-form.gFile"}}
             .row
               .col-sm-6
@@ -29,6 +28,7 @@
                   = ff.text_field :filename, class: 'form-control', placeholder: "Filename including extension"
               .col-sm-6.text-right
                 %div{id: "gFileDelete_#{index}", data: {target: "gist-form.gFileDelete"}}
+                  = ff.hidden_field :_destroy, value: "false"
                   - if gist.g_files.size > 1 && gist.persisted?
                     %button.btn.btn-outline-danger{type: "button", id: "gFileDeleteButton_#{index}", data: { action: "click->gist-form#deleteGFileField"}}
                       %span{class: "glyphicon glyphicon-trash"}
