@@ -36,7 +36,7 @@
               .col-sm-12
                 .form-group
                   = ff.label :contents, class: 'sr-only'
-                  = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10
+                  = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10, style: "font-family: monospace;"
     .row
       .col-sm-6.form-group
         = f.button "Add File", type: 'button', class: 'btn btn-secondary', id: 'addGFile', data: { action: "click->gist-form#addGFileField" }
