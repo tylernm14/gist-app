@@ -1,19 +1,45 @@
-= form_for @g_file do |f|
-  - if @g_file.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@g_file.errors.count, "error")} prohibited this g_file from being saved:"
-      %ul
-        - @g_file.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :filename
-    = f.text_field :filename
-  .field
-    = f.label :contents
-    = f.text_area :contents
-  .field
-    = f.label :gist_id
-    = f.number_field :gist_id
-  .actions
-    = f.submit 'Save'
+-#= form_for @g_file do |f|
+-#  - if @g_file.errors.any?
+-#    #error_explanation
+-#      %h2= "#{pluralize(@g_file.errors.count, "error")} prohibited this g_file from being saved:"
+-#      %ul
+-#        - @g_file.errors.full_messages.each do |message|
+-#          %li= message
+-#
+-#  .field
+-#    = f.label :filename
+-#    = f.text_field :filename
+-#  .field
+-#    = f.label :contents
+-#    = f.text_area :contents
+-#  .field
+-#    = f.label :gist_id
+-#    = f.number_field :gist_id
+-#  .actions
+-#    = f.submit 'Save'
+-#
+-#
+-#= parent_form.fields_for :g_file_attributes do |ff|
+-#  .form-group
+-#    = ff.label :filename, class: 'sr-only'
+-#    = ff.text_field :filename, class: 'form-control', placeholder: "Filename including extension"
+-#  .form-group
+-#    = ff.label :contents, class: 'sr-only'
+-#    = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10
+= parent_form.fields_for :g_files, g_file do |ff|
+  .row
+    .col-sm-6
+      .form-group
+        = ff.label :filename, class: 'sr-only'
+        = ff.text_field :filename, class: 'form-control', placeholder: "Filename including extension"
+    -#- if gist.g_files.size > 1
+    -#  - if gist.persisted?
+    .col-sm-6.text-right
+      %div{id: "gFileDelete_#{index}", data: {target: "gist-form.g_file_delete"}}
+        %button.btn.btn-outline-danger{type: "button", id: "gFileDeleteButton_#{index}", data: { action: "click->gist-form#deleteGFileField"}}
+          %span{class: "glyphicon glyphicon-trash"}
+  .row
+    .col-sm-12
+      .form-group
+        = ff.label :contents, class: 'sr-only'
+        = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10

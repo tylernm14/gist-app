@@ -3,7 +3,7 @@ class Gist < ApplicationRecord
 
   belongs_to :user
 
-  has_many :g_files
+  has_many :g_files, :dependent => :destroy
   accepts_nested_attributes_for :g_files, :allow_destroy => true,
                                 :reject_if => :all_blank
 

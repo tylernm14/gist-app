@@ -16,22 +16,34 @@
       %small Up to 16 alphanumeric characters plus '-' and '_'
   .form-group
     = f.hidden_field :user_id, :value => current_user.id
-  #gFiles
-    #g_file_group_0
-      = f.fields_for :g_files do |ff|
-        .form-group
-          = ff.label :filename, class: 'sr-only'
-          = ff.text_field :filename, class: 'form-control', placeholder: "Filename including extension"
-        .form-group
-          = ff.label :contents, class: 'sr-only'
-          = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10
-  .row
-    .col-sm-6.form-group
-      = f.button "Add File", type: 'button', class: 'btn btn-secondary', id: 'addGFile', onclick: 'addGFileField()'
-    .col-sm-6.form-group.text-right
-      .button-group
-        = f.submit class: 'btn btn-primary'
-        - if gist.persisted?
-          = link_to 'Cancel', gist, class: 'btn btn-link'
-        - else
-          = link_to 'Cancel', gists_path, class: 'btn btn-link'
+  %div{'data-controller' => 'gist-form'}
+    #gFiles{data: {target: "gist-form.gFiles"}}
+      - gist.g_files.each_with_index do |g_file, index|
+        = f.fields_for :g_files, g_file do |ff|
+          -#= render partial: 'g_files/form', locals: { g_file: g_file, parent_form: f, index: index }
+          %div{id: "gFileForm_#{index}", data: {target: "gist-form.gFile"}}
+            .row
+              .col-sm-6
+                .form-group
+                  = ff.label :filename, class: 'sr-only'
+                  = ff.text_field :filename, class: 'form-control', placeholder: "Filename including extension"
+              .col-sm-6.text-right
+                %div{id: "gFileDelete_#{index}", data: {target: "gist-form.gFileDelete"}}
+                  - if gist.g_files.size > 1 && gist.persisted?
+                    %button.btn.btn-outline-danger{type: "button", id: "gFileDeleteButton_#{index}", data: { action: "click->gist-form#deleteGFileField"}}
+                      %span{class: "glyphicon glyphicon-trash"}
+            .row
+              .col-sm-12
+                .form-group
+                  = ff.label :contents, class: 'sr-only'
+                  = ff.text_area :contents, class: 'form-control', placeholder: 'File contents...', rows: 10
+    .row
+      .col-sm-6.form-group
+        = f.button "Add File", type: 'button', class: 'btn btn-secondary', id: 'addGFile', data: { action: "click->gist-form#addGFileField" }
+      .col-sm-6.form-group.text-right
+        .button-group
+          = f.submit class: 'btn btn-primary'
+          - if gist.persisted?
+            = link_to 'Cancel', gist, class: 'btn btn-link'
+          - else
+            = link_to 'Cancel', gists_path, class: 'btn btn-link'

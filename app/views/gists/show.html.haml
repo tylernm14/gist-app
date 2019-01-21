@@ -1,12 +1,15 @@
 .page-header
-  .float-right
-    = link_to gists_path, class: 'btn btn-default' do
-      %span{class: "glyphicon glyphicon-list-alt"}
-      All Gists
-    = link_to edit_gist_path(@gist), class: 'btn btn-primary' do
-      %span{class: "glyphicon glyphicon-pencil"}
-      Edit
-  %h1 Show gist
+  .row
+    .col
+      %h1 Show gist
+    .col.text-right
+      = link_to gists_path, class: 'btn btn-default' do
+        %span{class: "glyphicon glyphicon-list-alt"}
+        All Gists
+      - if @gist.user == current_user
+        = link_to edit_gist_path(@gist), class: 'btn btn-primary' do
+          %span{class: "glyphicon glyphicon-pencil"}
+          Edit
 
 %dl.dl-horizontal
   %dt Description

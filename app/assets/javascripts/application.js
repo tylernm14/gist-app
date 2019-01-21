@@ -18,6 +18,10 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require data-confirm-modal
+//= require codemirror
+//= require codemirror/modes/ruby
+//= require codemirror/modes/python
+//= require codemirror/keymaps/vim
 
 //= require_tree .
 

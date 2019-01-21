@@ -1,9 +1,12 @@
 .page-header
-  .float-right
-    - if @gist.persisted?
-      = link_to @gist, method: :delete, class: 'text-danger', data: { confirm: 'Delete gist?' } do
-        %span{class: "glyphicon glyphicon-remove"}
-        Delete
-  %h1 Editing gist
+  .row
+    .col
+      %h1 Editing gist
+    .col
+      .text-right
+        - if @gist.persisted?
+          = link_to @gist, method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Delete gist?' } do
+            %span{class: "glyphicon glyphicon-remove"}
+            Delete
 
-= render 'form', gist: @gist
+= render 'form', gist: @gist, g_files: @gist.g_files
