@@ -14,7 +14,7 @@ class GistsController < ApplicationController
                 else
                   @gist.comments.where(parent_id: nil)
                 end
-    # @comments = @comments.page(params[:page]).per(5)
+    @comments = @comments.page(params.fetch(:page, 1)).per(5)
     @host_addr = request.host_with_port
   end
 

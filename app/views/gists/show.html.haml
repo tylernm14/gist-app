@@ -39,10 +39,6 @@
   = render @comments, continue_thread: 5
 
 %br
--#= paginate @comments
-
--#= form_for :comment do |f|
--#  -#= f.hidden_field :parent_id, nil
--#  = f.text_area :body
--#  = f.submit 'Comment'
+  .d-flex.just.justify-content-center
+    = paginate @comments, theme: 'twitter-bootstrap-4'
 
