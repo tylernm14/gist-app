@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="575ebb63-c63c-4911-9e37-f402d10a8d5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/spec/factories/g_files.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/gists.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/short_urls.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/factories/users.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/support/controller_macros.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/gist.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/gist.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/gists/show.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/gists/show.html.haml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190114023404_create_g_files.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190114023404_create_g_files.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190118034613_create_comments.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190118034613_create_comments.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190120011515_create_short_urls.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190120011515_create_short_urls.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/gist_form_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/controllers/gist_form_controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/controllers/gists_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/gists_controller_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -90,7 +74,7 @@
             <entry file="file://$PROJECT_DIR$/spec/controllers/gists_controller_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="546">
-                  <caret line="69" selection-start-line="69" selection-end-line="69" />
+                  <caret line="81" selection-start-line="81" selection-end-line="81" />
                 </state>
               </provider>
             </entry>
@@ -98,8 +82,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/controllers/g_files_controller_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="118">
-                  <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+                <state relative-caret-position="188">
+                  <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
                 </state>
               </provider>
             </entry>
@@ -131,11 +115,20 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/controllers/gists_controller_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="578">
-                  <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+                <state relative-caret-position="558">
+                  <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/javascript/controllers/gist_form_controller.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="544">
+                  <caret line="119" column="7" selection-start-line="119" selection-start-column="7" selection-end-line="119" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -238,7 +231,6 @@
         <option value="$PROJECT_DIR$/app/views/g_files/_form.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/gists.coffee" />
         <option value="$PROJECT_DIR$/app/views/shared/_navbar.html.haml" />
-        <option value="$PROJECT_DIR$/app/javascript/controllers/gist_form_controller.js" />
         <option value="$PROJECT_DIR$/app/views/gists/edit.html.haml" />
         <option value="$PROJECT_DIR$/app/views/comments/_form.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/comments_controller.rb" />
@@ -262,6 +254,7 @@
         <option value="$PROJECT_DIR$/spec/factories/users.rb" />
         <option value="$PROJECT_DIR$/spec/support/controller_macros.rb" />
         <option value="$PROJECT_DIR$/spec/controllers/gists_controller_spec.rb" />
+        <option value="$PROJECT_DIR$/app/javascript/controllers/gist_form_controller.js" />
       </list>
     </option>
   </component>
@@ -577,12 +570,12 @@
       <workItem from="1547580971419" duration="10563000" />
       <workItem from="1547610283762" duration="8302000" />
       <workItem from="1547673179416" duration="25628000" />
-      <workItem from="1547782324715" duration="109735000" />
+      <workItem from="1547782324715" duration="110008000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154228000" />
+    <option name="totallyTimeSpent" value="154501000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="365" y="103" width="2310" height="1337" extended-state="0" />
@@ -632,17 +625,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/spec/controllers/gists_controller_spec.rb</url>
-          <line>63</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/actionview-5.2.2/lib/action_view/helpers/text_helper.rb">
@@ -732,13 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/controllers/gist_form_controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -938,13 +913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/controllers/g_files_controller_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/gists_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -966,10 +934,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spec/controllers/g_files_controller_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/spec/controllers/gists_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+        <state relative-caret-position="558">
+          <caret line="69" column="42" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/controllers/gist_form_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="119" column="7" selection-start-line="119" selection-start-column="7" selection-end-line="119" selection-end-column="7" />
         </state>
       </provider>
     </entry>

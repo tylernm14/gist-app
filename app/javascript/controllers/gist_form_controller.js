@@ -63,59 +63,8 @@ export default class extends Controller {
         return firstVisibleHasDelete
     }
 
-    // firstGFileHasDelete() {
-    //     let element = document.getElementById('gFiles')
-    //     let numHiddenGFiles = document.getElementsByClassName("d-none").length
-    //     let gFileCount = this.gFileTargets.length - numHiddenGFiles
-    //     let delBtnDivs = this.gFileDeleteTargets
-    //     let delBtnCount = 0;
-    //     for (var i = 0; i < delBtnDivs.length; i++) {
-    //         if (delBtnDivs[i].getElementsByTagName('button').length > 0)
-    //             delBtnCount += 1
-    //     }
-    //
-    //     console.log("gfileCount " + gFileCount + " delBtnCount" + delBtnCount)
-    //     return gFileCount === delBtnCount
-    //     // console.log("child length" + element.children[0].children.length)
-    //     // if (element.children[0].children.length == 3) {
-    //     //     console.log("returning true because first gfile has delete")
-    //     //     return true
-    //     // }
-    //     // else {
-    //     //     console.log("reutnr false because first gfile doenst have delete")
-    //     //     return false
-    //     // }
-    // }
-
-    updateGFileDeletes() {
-        if (this.numGFiles() > 1)
-            if (!this.firstGFileHasDelete())
-                this.addDeleteToFirstGFile()
-            // else if (this.firstGFileHasDelete())
-            //     this.removeFirstGFileDelete()
-        return
-    }
 
     addDeleteToFirstGFile() {
-
-        // console.log("Add Delete to frist GFile")
-        // let date = new Date
-        // let mSec = date.getTime()
-        // let element = document.getElementById('gFiles')
-        // let firstGFileDivId = element.children[0].getAttribute('id')
-        //
-        // let divDelBtn = document.createElement('div')
-        // divDelBtn.setAttribute( 'class', 'form-group')
-        // divDelBtn.setAttribute( 'id', 'del_g_file_btn_0'.replace('0', mSec))
-        //
-        // let delBtn = document.createElement('button')
-        // delBtn.setAttribute('class', 'btn btn-danger')
-        // delBtn.setAttribute( 'type', 'button')
-        // delBtn.innerHTML = 'Delete'
-        // delBtn.setAttribute('onclick', 'deleteGFile(\'' + firstGFileDivId + '\')')
-        // divDelBtn.appendChild(delBtn)
-        //
-        // element.children[0].appendChild( divDelBtn )
         console.log(this.gFileDeleteTargets)
 
         let gFiles = this.gFileTargets
@@ -159,8 +108,7 @@ export default class extends Controller {
         let regexp = /gFileDeleteButton_(\d+)/
         let idNumStr = regexp.exec(delButtonId)[1]
         let gFileDiv = document.getElementById("gFileForm_"+idNumStr)
-        // rather than remove child, should set class to d-none and update hidden field for _destroy
-        // gFileDiv.toggleAttribute("class: d-none")
+
         let hiddenDestroy = delButton.previousElementSibling
         console.log(hiddenDestroy)
         if (hiddenDestroy != null) {
