@@ -96,6 +96,10 @@ export default class extends Controller {
         let date = new Date
         let msec = date.getTime();
         document.querySelector("#gFiles").insertAdjacentHTML("beforeend", this.genGFileForm(msec));
+        var textArea = document.getElementById("gist_g_files_attributes_"+msec.toString()+"_contents")
+        var editor = CodeMirror.fromTextArea(textArea, { lineNumbers: true})
+        // TODO: clean up this editor in memory when gFile divs are delete, probably use a hash and key it by textarea id
+        window.editors.push(editor)
         // need to check if all previous gFiles have delete button
         if (this.numGFiles() > 1)
             if (!this.firstGFileHasDelete())
