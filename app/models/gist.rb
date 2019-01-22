@@ -16,8 +16,8 @@ class Gist < ApplicationRecord
 
   validates :description, presence: true
   validates :user, presence: true
-  validates :g_files, presence: true
-  validates :short_url, presence: true
+  # validates :g_files, presence: true
+  # validates :short_url, presence: true
 
   private
 

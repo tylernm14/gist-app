@@ -3,7 +3,7 @@ class CreateGFiles < ActiveRecord::Migration[5.2]
     create_table :g_files do |t|
       t.string :filename
       t.text :contents
-      t.references :gist
+      t.references :gist, null: false
 
       t.timestamps
     end

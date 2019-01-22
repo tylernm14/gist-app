@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2019_01_20_011515) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
-    t.string "commentable_type"
-    t.integer "commentable_id"
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
     t.integer "parent_id"
     t.text "body"
     t.datetime "created_at", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_011515) do
   create_table "g_files", force: :cascade do |t|
     t.string "filename"
     t.text "contents"
-    t.integer "gist_id"
+    t.integer "gist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gist_id"], name: "index_g_files_on_gist_id"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 2019_01_20_011515) do
 
   create_table "short_urls", force: :cascade do |t|
     t.string "value"
-    t.string "shortenable_type"
-    t.integer "shortenable_id"
+    t.string "shortenable_type", null: false
+    t.integer "shortenable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shortenable_type", "shortenable_id"], name: "index_short_urls_on_shortenable_type_and_shortenable_id"

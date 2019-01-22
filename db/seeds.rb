@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+puts "Seeding default user..."
+user = User.new
+user.email = "tylernm@gmail.com"
+user.password = "password"
+user.password_confirmation = "password"
+user.save!
+puts "Done seeding."
