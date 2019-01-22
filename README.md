@@ -1,25 +1,13 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 Gist project for MavenLabs interview
+
+To run locally for development
+
+- `bundle install` install gems
+- `yarn install` download javascript packages
+- `bundle exec rake db:migrate db:test:prepare` to do migrations
+- `rail s` to start the server
+
+
+1. Go to "Sign Up" and create an account
+2. Make a gist
+
