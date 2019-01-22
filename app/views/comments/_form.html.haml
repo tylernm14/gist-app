@@ -1,4 +1,10 @@
 = form_with model: [commentable, Comment.new], html: { class: local_assigns[:class], data: { target: local_assigns[:target]}} do |f|
+  -#- if gist.errors.any?
+  -#  #error_explanation
+  -#    %h2.text-danger= "#{pluralize(gist.errors.count, "error")} prohibited this gist from being saved:"
+  -#    %ul
+  -#      - gist.errors.full_messages.each do |message|
+  -#        %li= message
   .form-group
     = f.text_area :body, placeholder: "Add a comment", class: "form-control"
   .form-group

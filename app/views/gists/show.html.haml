@@ -6,7 +6,7 @@
       = link_to gists_path, class: 'btn btn-default' do
         %span{class: "glyphicon glyphicon-list-alt"}
         All Gists
-      - if @gist.user == current_user
+      - if user_signed_in? && @gist.user == current_user
         = link_to edit_gist_path(@gist), class: 'btn btn-primary' do
           %span{class: "glyphicon glyphicon-pencil"}
           Edit
@@ -20,21 +20,27 @@
   %dd= link_to @link, @link
 
   %dt User
-  %dd= current_user.email
+  %dd= @gist.user.email
 
 %p
-  %h3 Files
+  %h3.d-inline.pr-2 Files
+  = link_to "#{gist_path(@gist)}/send_file_data" do
+    %span.glyphicon.glyphicon-download-alt
   - @gist.g_files.each do |g_file|
     .card.mb-4
       .card-header
         %strong= g_file.filename
+        .float-right
+          = link_to "#{g_file_path(g_file)}/#{g_file.filename}" do
+            %span.glyphicon.glyphicon-download-alt
       #myCardBody{ style: "font-family: monospace;"}
         .card-body
           %p= g_file.contents
 
 %h3 Comments
 #comments
-  = render partial: "comments/form", locals: { commentable: @gist }
+  - if user_signed_in?
+    = render partial: "comments/form", locals: { commentable: @gist }
   - if params[:comment]
     %p
       Single comment thread.

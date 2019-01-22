@@ -13,12 +13,11 @@ class CommentsController < ApplicationController
       end
     else
       redirect_to @commentable, alert: "Something went wrong"
-      # format.html { render 'gists/show', error: "Failed to save"}
-      # format.json { render json: @gist.errors, status: :unprocessable_entity }
     end
   end
 
   def destroy
+    puts "Tryong to destroy"
     @comment = @commentable.comments.find(params[:id])
     @comment.destroy
     redirect_to @commentable

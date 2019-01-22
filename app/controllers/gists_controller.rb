@@ -1,7 +1,9 @@
+require 'zip'
+
 class GistsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_gist, only: [:show, :edit, :update, :destroy]
+  before_action :set_gist, only: [:show, :edit, :update, :destroy, :send_file_data]
 
   # GET /gists
   def index
@@ -16,6 +18,17 @@ class GistsController < ApplicationController
                 end
     @comments = @comments.page(params.fetch(:page, 1)).per(5)
     @host_addr = request.host_with_port
+  end
+
+  def send_file_data
+    file_stream = Zip::OutputStream.write_buffer do |zip|
+      @gist.g_files.each do |g|
+        zip.put_next_entry g.filename
+        zip.write g.contents
+      end
+    end
+    send_data file_stream.string, filename: "gist_files_#{@gist.id}.zip", disposition: :attachment
+
   end
 
   def new

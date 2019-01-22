@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :parent, optional: true, class_name: "Comment"
 
   validates :commentable, presence: true
+  validates :body, presence: true, allow_nil: true
 
   def comments
     Comment.where(commentable: commentable, parent_id: id)
