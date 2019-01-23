@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :gists do
     resources :comments, module: :gists  #url.com/gists/:gist_id/comments/:comment_id
-    resources :g_files
+    resources :g_files, only: [:create, :update, :destroy]
   end
   get "/gists/:id/send_file_data", to: "gists#send_file_data"
   get "/gists/:gist_id/g_files/:id/:filename", to: "g_files#send_file_data", :constraints => {:filename => /[^\/]+/ }

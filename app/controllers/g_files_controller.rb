@@ -1,17 +1,6 @@
 class GFilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_g_file, only: [:show, :edit, :update, :destroy, :send_file_data]
-
-  # GET /g_files
-  # GET /g_files.json
-  def index
-    @g_files = GFile.all
-  end
-
-  # GET /g_files/1
-  # GET /g_files/1.json
-  def show
-  end
+  before_action :set_g_file, only: [:update, :destroy, :send_file_data]
 
   def send_file_data
     filename = params[:filename]
@@ -20,15 +9,6 @@ class GFilesController < ApplicationController
       data = @g_file.contents
       send_data data, filename: filename, disposition: :inline
     end
-  end
-
-  # GET /g_files/new
-  def new
-    @g_file = GFile.new
-  end
-
-  # GET /g_files/1/edit
-  def edit
   end
 
   # POST /g_files
