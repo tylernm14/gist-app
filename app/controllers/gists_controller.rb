@@ -68,7 +68,7 @@ class GistsController < ApplicationController
   def destroy
     @gist.destroy
     respond_to do |format|
-      format.html { redirect_to gists_url }
+      format.html { redirect_to gists_url, notice: 'Gist was successfully deleted.' }
       format.json { head :no_content }
     end
   end

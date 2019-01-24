@@ -58,7 +58,6 @@ RSpec.describe GistsController, type: :controller do
       }
       login_user
       it "creates a new Gist" do
-        puts valid_nested_params
         expect {
           post :create, params: valid_nested_params
         }.to change(Gist, :count).by(1)

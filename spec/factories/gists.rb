@@ -2,10 +2,16 @@ FactoryBot.define do
   factory :gist do
     user
     description { 'Fun gist!'}
-    # association :short_url, factory: :short_url, strategy: :build
-    after(:create) do |g|
-      create_list :g_file, 3, gist: g
-      create :short_url, shortenable: g
+
+    factory :gist_with_g_files do
+      transient do
+        g_files_count { 2 }
+      end
+      after(:create) do |gist, evaluator|
+        create_list(:g_file, evaluator.g_files_count, gist: gist)
+        create :short_url, shortenable: gist
+        gist.reload
+      end
     end
   end
 end
