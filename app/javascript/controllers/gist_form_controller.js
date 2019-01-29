@@ -1,15 +1,39 @@
 import { Controller } from "stimulus"
+import { getFileType } from "../helpers/gist_helper"
 
 export default class extends Controller {
-    static targets = ["gFiles", "gFile", "gFileDelete"];
+    static targets = ["gFiles", "gFile", "gFileDelete", "gFilename"];
 
+    initialize() {
+        let textAreas = document.getElementsByTagName("textarea")
+        let contentTextAreas = []
+        for(let i = 0; i < textAreas.length; i++) {
+            let match = textAreas[i].parentNode.querySelector('[id^="gist_g_files_attributes"]')
+            if (match != null)
+                contentTextAreas.push(match)
+        }
+        window.editors = {}
+        for(let i = 0; i < contentTextAreas.length; i++) {
+            window.editors[i.toString()] = CodeMirror.fromTextArea(contentTextAreas[i], {
+                lineNumbers: true,
+                mode: 'text/plain'
+            })
+        }
+        // for all the filename targets
+        this.gFilenameTargets.forEach((el, i) => {
+            this.highlightFileTypeById(el.getAttribute('id'), el.value)
+        })
+
+    }
+
+    // Need to move this form partial into a template file we can just render
     genGFileForm(index) {
         let formStr = `<div data-target="gist-form.gFile" id="gFileForm_0">
         <div class="row">
         <div class="col-sm-6">
         <div class="form-group">
         <label class="sr-only" for="gist_g_files_attributes_0_filename">Filename</label>
-        <input class="form-control" placeholder="Filename" type="text" name="gist[g_files_attributes][0][filename]" id="gist_g_files_attributes_0_filename">
+        <input class="form-control" placeholder="Filename" type="text" name="gist[g_files_attributes][0][filename]" id="gist_g_files_attributes_0_filename" data-target="gist-form.gFilename" data-action="keyup->gist-form#highlightFileType">
         </div>
         </div>
         <div class="col-sm-6 text-right">
@@ -99,7 +123,7 @@ export default class extends Controller {
         var textArea = document.getElementById("gist_g_files_attributes_"+msec.toString()+"_contents")
         var editor = CodeMirror.fromTextArea(textArea, { lineNumbers: true})
         // TODO: clean up this editor in memory when gFile divs are delete, probably use a hash and key it by textarea id
-        window.editors.push(editor)
+        window.editors[msec.toString()] = editor
         // need to check if all previous gFiles have delete button
         if (this.numGFiles() > 1)
             if (!this.firstGFileHasDelete())
@@ -129,5 +153,25 @@ export default class extends Controller {
         if ((visibleGFiles == 1) && (this.firstGFileHasDelete()))
             this.removeFirstVisibleGFileDelete()
 
+    }
+
+    setEditorMode(id, language) {
+        window.editors[id].setOption("mode", language)
+    }
+
+    highlightFileTypeById(filenameId, inputFilenameValue) {
+        var filetype = getFileType(inputFilenameValue)
+        console.log("filetype: " + filetype)
+        console.log("Filename id " + filenameId)
+        let regexp = /gist_g_files_attributes_(\d+)_filename/
+        let idNumStr = regexp.exec(filenameId)[1]
+        this.setEditorMode(idNumStr, filetype)
+    }
+
+    highlightFileType(event) {
+        // get input filename id
+        var filenameId = event.currentTarget.getAttribute('id')
+        var inputFilenameValue = event.currentTarget.value
+        this.highlightFileTypeById(filenameId, inputFilenameValue)
     }
 }

@@ -44,7 +44,7 @@ module Shortifiable
   end
 
   def sanitize_short_url
-    sanitized_url = self.value.strip.downcase.gsub(/(https?:\/\/)|(www\.)/, "")
+    sanitized_url = self.value.strip.gsub(/(https?:\/\/)|(www\.)/, "")
     self.value = sanitized_url
   end
 

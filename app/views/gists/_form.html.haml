@@ -26,7 +26,7 @@
               .col-sm-6
                 .form-group
                   = ff.label :filename, class: 'sr-only'
-                  = ff.text_field :filename, class: 'form-control', placeholder: "Filename including extension"
+                  = ff.text_field :filename, class: 'form-control', placeholder: "Filename including extension", data: { target: "gist-form.gFilename", action: "keyup->gist-form#highlightFileType"}
               .col-sm-6.text-right
                 %div{id: "gFileDelete_#{index}", data: {target: "gist-form.gFileDelete"}}
                   = ff.hidden_field :_destroy, value: "false"

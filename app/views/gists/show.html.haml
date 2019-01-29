@@ -23,19 +23,20 @@
   %dd= @gist.user.email
 
 %p
-  %h3.d-inline.pr-2 Files
-  = link_to "#{gist_path(@gist)}/send_file_data" do
-    %span.glyphicon.glyphicon-download-alt
-  - @gist.g_files.each do |g_file|
-    .card.mb-4
-      .card-header
-        %strong= g_file.filename
-        .float-right
-          = link_to "#{gist_g_file_path(@gist, g_file)}/#{g_file.filename}" do
-            %span.glyphicon.glyphicon-download-alt
-      #myCardBody{ style: "font-family: monospace;"}
-        .card-body
-          %p= g_file.contents
+  %div{data: {controller: "gist-show"}}
+    %h3.d-inline.pr-2 Files
+    = link_to "#{gist_path(@gist)}/send_file_data" do
+      %span.glyphicon.glyphicon-download-alt
+    - @gist.g_files.each do |g_file|
+      .card.mb-4
+        .card-header
+          %strong{data: {target: "gist-show.gFilename"}}= g_file.filename
+          .float-right
+            = link_to "#{gist_g_file_path(@gist, g_file)}/#{g_file.filename}" do
+              %span.glyphicon.glyphicon-download-alt
+        #myCardBody{ style: "font-family: monospace;"}
+          .card-body
+            %textarea{data: {target: "gist-show.gContentsTextArea"}}=g_file.contents
 
 %h3 Comments
 #comments
