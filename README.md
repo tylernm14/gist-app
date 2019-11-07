@@ -17,3 +17,10 @@ Six character short URLs are made automatically for new gists, but a custom uri 
 Gist index and gist show actions are public, while gist creation requires user account signup.
 
 Rspecs are minimal but forthcoming
+
+### Potential Addons
+
+- Oauth
+- JSON API
+- Sorting filtering gists
+- Gist permissions
